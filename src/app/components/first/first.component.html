@@ -1,0 +1,9 @@
+<p>{{name}} works!</p>
+<button (click)="showHide()" class="btn btn-danger">
+  {{showHideMessage}}
+</button>
+<input #myInput (change)="changeMessage(myInput.value)" type="text" class="form-control">
+Le contenu de l'input est : {{message}}
+<div [hidden]="isHidden" class="alert alert-warning">
+  <app-second></app-second>
+</div>
