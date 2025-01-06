@@ -9,6 +9,8 @@ import { ColorComponent } from './components/color/color.component';
 import { NwoWayComponent } from './components/nwo-way/nwo-way.component';
 import { FormsModule } from '@angular/forms';
 import { RotatingCardComponent } from './components/rotating-card/rotating-card.component';
+import { PereComponent } from './commInterComponents/pere/pere.component';
+import { FilsComponent } from './commInterComponents/fils/fils.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { RotatingCardComponent } from './components/rotating-card/rotating-card.
     SecondComponent,
     ColorComponent,
     NwoWayComponent,
-    RotatingCardComponent
+    RotatingCardComponent,
+    PereComponent,
+    FilsComponent
   ],
   imports: [
     BrowserModule,
