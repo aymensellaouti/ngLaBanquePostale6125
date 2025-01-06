@@ -1,0 +1,9 @@
+<p (click)="interrupteur()" class="lampe" [ngClass]="{
+  on: isOn,
+  off: !isOn,
+}">lampe </p>
+
+<div appHighlight>cc</div>
+<div [in]="'lightblue'" [out]="'purple'" appHighlight>cc</div>
+<div [in]="'gold'" [out]="'pink'" appHighlight>cc</div>
+<div [in]="'silver'" [out]="'#cd7f32'" appHighlight>cc</div>
