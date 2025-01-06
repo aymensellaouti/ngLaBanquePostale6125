@@ -9,4 +9,6 @@ import { Cv } from '../model/cv';
 export class CvCardComponent {
   @Input()
   cv: Cv | null = null;
+
+
 }

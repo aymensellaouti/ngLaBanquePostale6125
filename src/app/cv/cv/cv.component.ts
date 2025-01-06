@@ -8,7 +8,31 @@ import { Cv } from '../model/cv';
 })
 export class CvComponent {
   cvs: Cv[] = [
-    new Cv(1, 'Bougrine', 'Anissa', 'Dev', 'rotating_card_profile.png', '1234', 20),
-    new Cv(2, 'Madrange', 'Solène', 'Dev', 'rotating_card_profile.png', '1235', 20),
+    new Cv(
+      1,
+      'Bougrine',
+      'Anissa',
+      'Dev',
+      'rotating_card_profile.png',
+      '1234',
+      20
+    ),
+    new Cv(
+      2,
+      'Madrange',
+      'Solène',
+      'Dev',
+      'rotating_card_profile.png',
+      '1235',
+      20
+    ),
   ];
+  /**
+   * Le cv sélectionné dans la liste
+   */
+  selectedCv: Cv | null = null;
+
+  getSelectedCv(cv: Cv) {
+    this.selectedCv = cv;
+  }
 }
