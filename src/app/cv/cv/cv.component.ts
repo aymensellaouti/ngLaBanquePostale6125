@@ -31,7 +31,7 @@ export class CvComponent {
       'VOIMENT',
       'Henri',
       'Dev',
-      'rotating_card_profile2.png',
+      '',
       '1236',
       20
     ),
@@ -40,7 +40,7 @@ export class CvComponent {
       'WEILL',
       'Laurent',
       'Dev',
-      'rotating_card_profile3.png',
+      '           ',
       '12358',
       20
     ),
@@ -81,6 +81,7 @@ export class CvComponent {
       20
     ),
   ];
+  today = new Date();
   /**
    * Le cv sélectionné dans la liste
    */
