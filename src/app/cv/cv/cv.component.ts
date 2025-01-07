@@ -15,6 +15,7 @@ export class CvComponent {
   cvService = inject(CvService);
   cvs: Cv[] = this.cvService.getCvs();
   today = new Date();
+  selectedCv$ = this.cvService.selectCv$
   /**
    * Le cv sélectionné dans la liste
    */
@@ -28,7 +29,8 @@ export class CvComponent {
   ) {
     this.sayHelloService.hello();
     this.loggerService.log('je suis le CvComonent');
-    this.toastr.info('Bienvenu :)')
+    this.toastr.info('Bienvenu :)');
+    //this.cvService.selectCv$.subscribe({next: (cv) => {this.selectedCv = cv}})
   }
 
 }
