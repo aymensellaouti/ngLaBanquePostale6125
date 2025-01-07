@@ -33,6 +33,7 @@ import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { CommonModule } from '@angular/common';
     EmbaucheComponent,
     DetailsCvComponent,
     WeekTodoComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
