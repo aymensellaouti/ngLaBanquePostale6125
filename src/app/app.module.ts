@@ -25,6 +25,8 @@ import { DefaultImagePipe } from './cv/pipes/default-image.pipe';
 import { LoggerService } from './services/logger.service';
 import { SayHelloService } from './services/sayHello.service';
 import { TodoComponent } from './todo/todo/todo.component';
+import { EmbaucheComponent } from './cv/embauche/embauche.component';
+import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { TodoComponent } from './todo/todo/todo.component';
     RainbowDirective,
     BtcToUsdPipe,
     DefaultImagePipe,
-    TodoComponent
+    TodoComponent,
+    EmbaucheComponent,
+    DetailsCvComponent
   ],
   imports: [
     BrowserModule,
