@@ -34,6 +34,8 @@ import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { NF404Component } from './components/nf404/nf404.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DetailsCvComponent,
     WeekTodoComponent,
     NavbarComponent,
+    NF404Component,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
