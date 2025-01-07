@@ -5,7 +5,7 @@
     <p>{{ 1 | btcToUsd : true }}</p>
   </div>
   <div class="col">
-    <app-list-cvs (forwardCv)="getSelectedCv($event)" [cvs]="cvs" />
+    <app-list-cvs [cvs]="cvs" />
   </div>
   <div class="col">
     <app-cv-card [cv]="selectedCv" />

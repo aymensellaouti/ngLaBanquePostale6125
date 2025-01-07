@@ -30,7 +30,5 @@ export class CvComponent {
     this.loggerService.log('je suis le CvComonent');
     this.toastr.info('Bienvenu :)')
   }
-  getSelectedCv(cv: Cv) {
-    this.selectedCv = cv;
-  }
+
 }

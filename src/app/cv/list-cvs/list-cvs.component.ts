@@ -10,7 +10,7 @@ export class ListCvsComponent {
   @Input()
   cvs: Cv[] = [];
 
-  @Output()
-  forwardCv = new EventEmitter<Cv>();
+  // @Output()
+  // forwardCv = new EventEmitter<Cv>();
 
 }
