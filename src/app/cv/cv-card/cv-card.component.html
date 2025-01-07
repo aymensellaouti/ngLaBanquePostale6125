@@ -51,7 +51,8 @@
                             </div>
                         </div>
                         <div class="footer">
-                            <button class="btn btn-primary" (click)="embaucher()">embaucher</button>
+                            <button class="btn btn-primary m-1" (click)="embaucher()">embaucher</button>
+                            <button class="btn btn-dark m-1" [routerLink]="['/cv', cv.id]">détails</button>
                         </div>
                     </div> <!-- end back panel -->
                 </div> <!-- end card -->

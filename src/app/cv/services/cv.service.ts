@@ -81,7 +81,7 @@ export class CvService {
    * @returns Cv | null
    */
   findCvById(id: number): Cv | null {
-    return null;
+    return this.#cvs.find(cv => cv.id == id) ?? null;
   }
 
   /**
@@ -92,6 +92,11 @@ export class CvService {
    * @returns boolean
    */
   deleteCv(cv: Cv): boolean {
-    return false;
+     const index = this.#cvs.indexOf(cv);
+     if (index > -1) {
+       this.#cvs.splice(index, 1);
+       return true;
+     }
+     return false;
   }
 }
