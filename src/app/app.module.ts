@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
 import { SecondComponent } from './components/second/second.component';
 import { ColorComponent } from './components/color/color.component';
 import { NwoWayComponent } from './components/nwo-way/nwo-way.component';
-import { FormsModule } from '@angular/forms';
 import { RotatingCardComponent } from './components/rotating-card/rotating-card.component';
 import { PereComponent } from './commInterComponents/pere/pere.component';
 import { FilsComponent } from './commInterComponents/fils/fils.component';
@@ -27,6 +31,8 @@ import { SayHelloService } from './services/sayHello.service';
 import { TodoComponent } from './todo/todo/todo.component';
 import { EmbaucheComponent } from './cv/embauche/embauche.component';
 import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
+import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -51,13 +57,16 @@ import { DetailsCvComponent } from './cv/details-cv/details-cv.component';
     DefaultImagePipe,
     TodoComponent,
     EmbaucheComponent,
-    DetailsCvComponent
+    DetailsCvComponent,
+    WeekTodoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
