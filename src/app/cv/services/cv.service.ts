@@ -143,9 +143,7 @@ export class CvService {
    * @returns boolean
    */
   deleteCv(cv: Cv): Observable<{count: number}> {
-    //const params = new HttpParams().set(APP_CONST.accesTokenParamName, this.authService.getToken())
-    const headers = new HttpHeaders().set(APP_CONST.authorizationHeader, this.authService.getToken())
-    return this.http.delete<{ count: number }>(APP_API.cv + cv.id, {headers});
+      return this.http.delete<{ count: number }>(APP_API.cv + cv.id);
   }
 
   /**

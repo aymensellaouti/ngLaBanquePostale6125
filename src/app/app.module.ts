@@ -39,6 +39,7 @@ import { TestFormComponent } from './formulaire/test-form/test-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { TestObservableComponent } from './rxjs/test-observable/test-observable.component';
 import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import { authHttpInterceptor } from './auth/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -79,8 +80,9 @@ import { AddCvComponent } from './cv/add-cv/add-cv.component';
     FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    HttpClientModule
+    HttpClientModule,
   ],
+  providers: [authHttpInterceptor],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
