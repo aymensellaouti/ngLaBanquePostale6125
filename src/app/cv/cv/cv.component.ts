@@ -5,6 +5,7 @@ import { SayHelloService } from 'src/app/services/sayHello.service';
 import { TodoService } from 'src/app/todo/service/todo.service';
 import { ToastrService } from 'ngx-toastr';
 import { CvService } from '../services/cv.service';
+import { catchError, EMPTY, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-cv',
@@ -13,7 +14,13 @@ import { CvService } from '../services/cv.service';
 })
 export class CvComponent {
   cvService = inject(CvService);
-  cvs: Cv[] = this.cvService.getCvs();
+  cvs$: Observable<Cv[]> = this.cvService.getCvs().pipe(
+    catchError(e => {
+      // Todo
+      this.toastr.error(`LEs données sont fictives merci de contacter l'admin`);
+      return of(this.cvService.getFakeCvs());
+    })
+  );
   today = new Date();
   selectedCv$ = this.cvService.selectCv$
   /**
@@ -30,6 +37,13 @@ export class CvComponent {
     this.sayHelloService.hello();
     this.loggerService.log('je suis le CvComonent');
     this.toastr.info('Bienvenu :)');
+    // this.cvService.getCvs().subscribe({
+    //   next: (cvsFromApi) => this.cvs = cvsFromApi,
+    //   error: (e) => {
+    //     this.cvs = this.cvService.getFakeCvs();
+    //     this.toastr.error(`LEs données sont fictives merci de contacter l'admin`)
+    //   }
+    // })
     //this.cvService.selectCv$.subscribe({next: (cv) => {this.selectedCv = cv}})
   }
 

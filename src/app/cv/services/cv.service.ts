@@ -1,6 +1,8 @@
-import {  Injectable } from '@angular/core';
+import {  inject, Injectable } from '@angular/core';
 import { Cv } from '../model/cv';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { APP_API } from 'src/app/config/app-api.config';
 
 
 @Injectable({
@@ -73,12 +75,22 @@ export class CvService {
    * Cv1 CV2 CV1 CV5 .....
    */
   selectCv$ = this.#selectCvSubject$.asObservable();
+
+  http = inject(HttpClient);
+  /**
+   * Retourne la liste des fake cvs
+   * @returns Cv[]
+   */
+  getFakeCvs(): Cv[] {
+    return this.#cvs;
+  }
+
   /**
    * Retourne la liste des cvs
    * @returns Cv[]
    */
-  getCvs(): Cv[] {
-    return this.#cvs;
+  getCvs(): Observable<Cv[]> {
+    return this.http.get<Cv[]>(APP_API.cv);
   }
 
   /**
@@ -88,8 +100,19 @@ export class CvService {
    * @param id
    * @returns Cv | null
    */
-  findCvById(id: number): Cv | null {
-    return this.#cvs.find(cv => cv.id == id) ?? null;
+  findFakeCvById(id: number): Cv | null {
+    return this.#cvs.find((cv) => cv.id == id) ?? null;
+  }
+
+  /**
+   *
+   * Cherche un cv avec son id dans lai liste fictive de cvs
+   *
+   * @param id
+   * @returns Cv | null
+   */
+  findCvById(id: number): Observable<Cv> {
+    return this.http.get<Cv>(APP_API.cv + id);
   }
 
   /**
@@ -99,13 +122,24 @@ export class CvService {
    * @param cv : Cv
    * @returns boolean
    */
-  deleteCv(cv: Cv): boolean {
-     const index = this.#cvs.indexOf(cv);
-     if (index > -1) {
-       this.#cvs.splice(index, 1);
-       return true;
-     }
-     return false;
+  deleteFakeCv(cv: Cv): boolean {
+    const index = this.#cvs.indexOf(cv);
+    if (index > -1) {
+      this.#cvs.splice(index, 1);
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   *
+   * Supprime un cv s'il le trouve
+   *
+   * @param cv : Cv
+   * @returns boolean
+   */
+  deleteCv(cv: Cv): Observable<{count: number}> {
+    return this.http.delete<{ count: number }>(APP_API.cv + cv.id);
   }
 
   /**
