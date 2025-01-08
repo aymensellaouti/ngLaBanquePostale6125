@@ -12,15 +12,17 @@ import { NF404Component } from './components/nf404/nf404.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AddCvComponent } from './cv/add-cv/add-cv.component';
+import { authGuard } from './auth/guard/auth.guard';
+import { canLeaveGuard } from './guards/can-leave.guard';
 
 const routes: Routes = [
   {path: '', component: FirstComponent},
   {path: APP_ROUTES.cv, component: AdminComponent, children: [
     {path: '', component: CvComponent},
-    {path: 'add', component: AddCvComponent},
+    {path: 'add', component: AddCvComponent, canActivate: [authGuard]},
     {path: ':id', component: DetailsCvComponent},
   ]},
-  {path: 'todo', component: TodoComponent},
+  {path: 'todo', component: TodoComponent, canDeactivate: [canLeaveGuard]},
   {path: 'word', component: MiniWordComponent},
   {path: 'color', component: ColorComponent},
   {path: APP_ROUTES.login, component: LoginComponent},
