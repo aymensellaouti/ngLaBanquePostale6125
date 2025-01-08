@@ -38,6 +38,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { TestFormComponent } from './formulaire/test-form/test-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { TestObservableComponent } from './rxjs/test-observable/test-observable.component';
+import { AddCvComponent } from './cv/add-cv/add-cv.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { TestObservableComponent } from './rxjs/test-observable/test-observable.
     TestFormComponent,
     LoginComponent,
     TestObservableComponent,
+    AddCvComponent,
   ],
   imports: [
     BrowserModule,
