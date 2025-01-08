@@ -19,6 +19,12 @@ export class TodoComponent {
    * Le todo à ajouter à la liste
    */
   todo = new Todo();
+
+  constructor() {
+    this.todoService.getTodoApi().subscribe({
+      next:(todos) => {console.log(todos);}
+    });
+  }
   addTodo() {
     this.todoService.addTodo(this.todo);
     this.todo = new Todo();
