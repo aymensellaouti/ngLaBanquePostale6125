@@ -1,4 +1,4 @@
-import {  inject, Injectable } from '@angular/core';
+import {  inject, Injectable, signal } from '@angular/core';
 import { Cv } from '../model/cv';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -78,6 +78,9 @@ export class CvService {
    */
   selectCv$ = this.#selectCvSubject$.asObservable();
 
+  #selectedCv = signal<Cv | null>(null);
+  selectedCv = this.#selectedCv.asReadonly();
+
   http = inject(HttpClient);
 
   authService = inject(AuthService);
@@ -155,5 +158,6 @@ export class CvService {
    */
   selectCv(cv: Cv) {
     this.#selectCvSubject$.next(cv);
+    this.#selectedCv.set(cv);
   }
 }

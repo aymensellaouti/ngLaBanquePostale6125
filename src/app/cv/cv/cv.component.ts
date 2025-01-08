@@ -42,6 +42,7 @@ export class CvComponent {
   );
   today = new Date();
   selectedCv$ = this.cvService.selectCv$
+  selectedCvSignal = this.cvService.selectedCv;
   /**
    * Le cv sélectionné dans la liste
    */
