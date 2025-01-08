@@ -36,6 +36,7 @@
             <div class="d-flex justify-content-center">
               <button
                 (click)="delete(cv)"
+                *ngIf="authService.isAuthenticated()"
                 class="btn btn-danger">
                 Delete
               </button>

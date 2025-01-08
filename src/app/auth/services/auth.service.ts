@@ -7,19 +7,19 @@ import { LoginResonseDto } from '../dto/login-response.dto';
 import { APP_CONST } from 'src/app/config/app-constantes.config';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   http = inject(HttpClient);
 
   login(credentials: CredentialsDto): Observable<boolean> {
-    return this.http.post<LoginResonseDto>(APP_API.login,credentials).pipe(
-      tap(response => {
+    return this.http.post<LoginResonseDto>(APP_API.login, credentials).pipe(
+      tap((response) => {
         this.setToken(response.id);
       }),
-      map(response => true),
-      catchError(e => of(false))
-    )
+      map((response) => true),
+      catchError((e) => of(false))
+    );
   }
 
   setToken(token: string): void {
@@ -29,8 +29,15 @@ export class AuthService {
   getToken(): string {
     return localStorage.getItem(APP_CONST.tokenName) ?? '';
   }
+  removeToken(): void {
+    localStorage.removeItem(APP_CONST.tokenName);
+  }
 
   isAuthenticated(): boolean {
     return !!this.getToken();
+  }
+
+  logout() {
+    this.removeToken();
   }
 }

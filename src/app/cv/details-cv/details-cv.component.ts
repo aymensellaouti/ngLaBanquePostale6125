@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { APP_ROUTES } from "src/app/config/app-routes.config";
 import { catchError, EMPTY, Observable, share } from "rxjs";
 import { ToastrService } from "ngx-toastr";
+import { AuthService } from "src/app/auth/services/auth.service";
 
 @Component({
   selector: 'app-details-cv',
@@ -16,16 +17,15 @@ export class DetailsCvComponent {
   router = inject(Router);
   toast = inject(ToastrService);
   acr = inject(ActivatedRoute);
-  cv$: Observable<Cv> = this.cvService.findCvById(
-    this.acr.snapshot.params['id']
-  ).pipe(
-    catchError(
-      e => {
+  authService = inject(AuthService);
+  cv$: Observable<Cv> = this.cvService
+    .findCvById(this.acr.snapshot.params['id'])
+    .pipe(
+      catchError((e) => {
         this.router.navigate([APP_ROUTES.cv]);
         return EMPTY;
-      }
-    )
-  );
+      })
+    );
   constructor() {
     const id = this.acr.snapshot.params['id'];
     //this.cv = this.cvService.findCvById(+id);
@@ -38,15 +38,14 @@ export class DetailsCvComponent {
     // })
   }
   delete(cv: Cv) {
-      this.cvService.deleteCv(cv).subscribe({
-        next: () => {
-          this.router.navigate([APP_ROUTES.cv]);
-        },
-        error: (e) => {
-          this.toast.error(`Il y a un problème mercide contacter l'admin`)
-          console.log(e);
-        }
-      });
-
+    this.cvService.deleteCv(cv).subscribe({
+      next: () => {
+        this.router.navigate([APP_ROUTES.cv]);
+      },
+      error: (e) => {
+        this.toast.error(`Il y a un problème mercide contacter l'admin`);
+        console.log(e);
+      },
+    });
   }
 }
