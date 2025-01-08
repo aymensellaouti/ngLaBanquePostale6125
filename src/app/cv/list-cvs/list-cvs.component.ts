@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Cv } from '../model/cv';
-import { NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { CvItemComponent } from '../cv-item/cv-item.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { CvItemComponent } from '../cv-item/cv-item.component';
     templateUrl: './list-cvs.component.html',
     styleUrls: ['./list-cvs.component.css'],
     standalone: true,
-    imports: [NgFor, NgClass, CvItemComponent]
+    imports: [NgClass, CvItemComponent]
 })
 export class ListCvsComponent {
   @Input()
