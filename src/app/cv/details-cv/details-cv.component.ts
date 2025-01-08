@@ -6,11 +6,14 @@ import { APP_ROUTES } from "src/app/config/app-routes.config";
 import { catchError, EMPTY, Observable, share } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "src/app/auth/services/auth.service";
+import { NgIf, AsyncPipe } from "@angular/common";
 
 @Component({
-  selector: 'app-details-cv',
-  templateUrl: './details-cv.component.html',
-  styleUrls: ['./details-cv.component.css'],
+    selector: 'app-details-cv',
+    templateUrl: './details-cv.component.html',
+    styleUrls: ['./details-cv.component.css'],
+    standalone: true,
+    imports: [NgIf, AsyncPipe],
 })
 export class DetailsCvComponent {
   cvService = inject(CvService);

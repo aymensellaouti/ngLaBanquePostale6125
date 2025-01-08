@@ -8,8 +8,8 @@ describe('ListCvsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListCvsComponent]
-    });
+    imports: [ListCvsComponent]
+});
     fixture = TestBed.createComponent(ListCvsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

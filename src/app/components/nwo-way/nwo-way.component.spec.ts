@@ -8,8 +8,8 @@ describe('NwoWayComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NwoWayComponent]
-    });
+    imports: [NwoWayComponent]
+});
     fixture = TestBed.createComponent(NwoWayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
