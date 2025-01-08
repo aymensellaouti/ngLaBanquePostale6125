@@ -1,8 +1,10 @@
 import {  inject, Injectable } from '@angular/core';
 import { Cv } from '../model/cv';
 import { Observable, Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { APP_API } from 'src/app/config/app-api.config';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { APP_CONST } from 'src/app/config/app-constantes.config';
 
 
 @Injectable({
@@ -77,6 +79,8 @@ export class CvService {
   selectCv$ = this.#selectCvSubject$.asObservable();
 
   http = inject(HttpClient);
+
+  authService = inject(AuthService);
   /**
    * Retourne la liste des fake cvs
    * @returns Cv[]
@@ -139,7 +143,9 @@ export class CvService {
    * @returns boolean
    */
   deleteCv(cv: Cv): Observable<{count: number}> {
-    return this.http.delete<{ count: number }>(APP_API.cv + cv.id);
+    //const params = new HttpParams().set(APP_CONST.accesTokenParamName, this.authService.getToken())
+    const headers = new HttpHeaders().set(APP_CONST.authorizationHeader, this.authService.getToken())
+    return this.http.delete<{ count: number }>(APP_API.cv + cv.id, {headers});
   }
 
   /**
