@@ -29,6 +29,9 @@ import { BtcToUsdPipe } from '../../pipes/btc-to-usd.pipe';
 ],
 })
 export class CvComponent {
+  private loggerService = inject(LoggerService);
+  private sayHelloService = inject(SayHelloService);
+
   cvService = inject(CvService);
   cvs$: Observable<Cv[]> = this.cvService.getCvs().pipe(
     catchError(e => {
@@ -45,11 +48,9 @@ export class CvComponent {
   selectedCv: Cv | null = null;
   todoService = inject(TodoService);
   toastr: ToastrService = inject(ToastrService);
+
   //sayHelloService: SayHelloService = new SayHelloService();
-  constructor(
-    private loggerService: LoggerService,
-    private sayHelloService: SayHelloService
-  ) {
+  constructor() {
     this.sayHelloService.hello();
     this.loggerService.log('je suis le CvComonent');
     this.toastr.info('Bienvenu :)');
